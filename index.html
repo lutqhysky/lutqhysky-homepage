@@ -3,345 +3,404 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>lutqhysky · 导航主页</title>
+  <title>lutqhysky · 个人主页</title>
   <style>
     :root {
-      --bg: #eceef2;
-      --card: #ffffff;
-      --text: #2e2f35;
-      --muted: #6d717c;
-      --line: rgba(32, 37, 49, 0.08);
-      --blue: #2f80ed;
-      --orange: #ff9f1a;
-      --radius-xl: 26px;
-      --radius-lg: 20px;
+      --bg: #f5f5f7;
+      --surface: #ffffff;
+      --surface-soft: #fbfbfd;
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --line: rgba(0, 0, 0, 0.08);
+      --blue: #0071e3;
+      --blue-hover: #0077ed;
+      --radius-xl: 28px;
+      --radius-lg: 22px;
       --radius-md: 16px;
-      --shadow: 0 10px 24px rgba(18, 24, 33, 0.08);
+      --shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
+    html,
     body {
       margin: 0;
-      font-family: "SF Pro Text", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+      padding: 0;
+      font-family: "SF Pro Text", "SF Pro Display", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
       color: var(--text);
-      background:
-        linear-gradient(rgba(175, 184, 200, 0.22) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(175, 184, 200, 0.22) 1px, transparent 1px),
-        var(--bg);
-      background-size: 44px 44px, 44px 44px, auto;
-      min-height: 100vh;
+      background: var(--bg);
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      height: 52px;
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      background: rgba(251, 251, 253, 0.78);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .topbar-inner {
+      max-width: 1100px;
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 14px;
+    }
+
+    .brand {
+      font-weight: 600;
+      letter-spacing: -0.2px;
+    }
+
+    .top-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
     }
 
     .page {
-      max-width: 980px;
+      max-width: 1160px;
       margin: 0 auto;
-      padding: 14px 14px 34px;
+      padding: 28px 18px 56px;
     }
 
     .hero {
-      position: relative;
-      overflow: hidden;
       border-radius: var(--radius-xl);
-      background:
-        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.38), transparent 44%),
-        linear-gradient(135deg, #5d9460, #87b984 40%, #6ea67a);
-      min-height: 206px;
-      padding: 16px;
+      background: radial-gradient(circle at 20% 0%, #ffffff 0%, #f7f7fa 50%, #efeff4 100%);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      text-align: center;
+      padding: 86px 20px 78px;
+      margin-bottom: 18px;
       box-shadow: var(--shadow);
     }
 
-    .hero h1 {
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+    }
+
+    .eyebrow {
       margin: 0;
-      color: rgba(255, 255, 255, 0.86);
-      text-align: center;
-      font-size: clamp(28px, 6vw, 40px);
-      letter-spacing: -0.8px;
-      line-height: 1.1;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.15);
-    }
-
-    .search-shell {
-      margin-top: 14px;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 999px;
-      padding: 6px;
-      display: flex;
-      align-items: center;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.14);
-    }
-
-    .search-form {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      gap: 8px;
-      padding: 0 10px;
-    }
-
-    .search-icon {
-      font-size: 18px;
-      color: #7b818f;
-      flex-shrink: 0;
-    }
-
-    .search-input {
-      width: 100%;
-      border: none;
-      outline: none;
-      height: 42px;
-      background: transparent;
-      font-size: 17px;
-      color: #30333b;
-    }
-
-    .search-btn {
-      border: none;
-      height: 38px;
-      padding: 0 16px;
-      border-radius: 999px;
-      background: var(--blue);
-      color: #fff;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-
-    .toolbar {
-      margin-top: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.93);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 14px 18px;
-    }
-
-    .tool {
-      color: #3f4450;
-      font-size: 26px;
-      line-height: 1;
-    }
-
-    .switch {
-      width: fit-content;
-      margin: 14px auto 2px;
-      background: rgba(48, 53, 64, 0.35);
-      border-radius: 999px;
-      padding: 4px;
-      display: flex;
-      gap: 4px;
-      backdrop-filter: blur(4px);
-    }
-
-    .pill {
-      height: 38px;
-      min-width: 170px;
-      border-radius: 999px;
-      border: none;
-      padding: 0 16px;
-      background: transparent;
-      color: #f2f4f8;
-      font-size: 17px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .pill.active {
-      background: #fff;
       color: var(--blue);
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.2px;
     }
 
-    .section {
-      margin-top: 24px;
+    .hero h1 {
+      margin: 14px auto 0;
+      max-width: 920px;
+      font-size: clamp(38px, 6vw, 78px);
+      line-height: 1.06;
+      letter-spacing: -1.6px;
+      font-weight: 700;
     }
 
-    .section-title {
-      margin: 0 0 14px;
-      color: #a7b0bf;
-      font-size: 49px;
-      font-weight: 800;
-      letter-spacing: -1px;
+    .hero p {
+      margin: 18px auto 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: clamp(18px, 2vw, 28px);
+      line-height: 1.35;
+      letter-spacing: -0.2px;
+    }
+
+    .hero-actions {
+      margin-top: 30px;
       display: flex;
-      align-items: center;
-      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
-    .section-title span {
-      color: #5f636c;
-      font-size: 42px;
+    .btn {
+      border-radius: 999px;
+      padding: 11px 20px;
+      font-size: 16px;
+      font-weight: 500;
+      border: 1px solid var(--line);
+      background: #fff;
+      transition: 0.2s ease;
+    }
+
+    .btn.primary {
+      border-color: transparent;
+      color: #fff;
+      background: var(--blue);
+    }
+
+    .btn.primary:hover {
+      background: var(--blue-hover);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+    }
+
+    .panel h2 {
+      margin: 0;
+      font-size: 36px;
+      line-height: 1.1;
+      letter-spacing: -0.9px;
+    }
+
+    .panel p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .status-card {
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      background: linear-gradient(160deg, #111214, #22242b);
+      color: #fff;
+      min-height: 100%;
+    }
+
+    .status-card h3 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: -0.4px;
+    }
+
+    .time {
+      margin-top: 20px;
+      font-size: 46px;
+      font-weight: 600;
+      letter-spacing: -1px;
+    }
+
+    .date {
+      margin-top: 8px;
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 15px;
     }
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 16px;
     }
 
     .card {
-      position: relative;
-      display: block;
-      background: var(--card);
-      border: 1px solid var(--line);
+      background: var(--surface-soft);
+      border: 1px solid rgba(0, 0, 0, 0.06);
       border-radius: var(--radius-md);
-      padding: 18px;
-      box-shadow: 0 6px 14px rgba(22, 28, 41, 0.05);
-      min-height: 168px;
-      transition: 0.18s ease;
-    }
-
-    .card:hover { transform: translateY(-2px); }
-
-    .heat {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      background: #fff1dc;
-      color: var(--orange);
-      border-radius: 10px;
-      padding: 3px 8px;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .logo {
-      width: 54px;
-      height: 54px;
-      border-radius: 14px;
-      background: #f3f5fb;
-      border: 1px solid rgba(66, 75, 92, 0.1);
+      padding: 22px;
+      transition: 0.2s ease;
+      min-height: 170px;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 26px;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .card-tag {
+      display: inline-flex;
+      border-radius: 999px;
+      background: rgba(0, 113, 227, 0.09);
+      color: var(--blue);
+      font-size: 12px;
+      padding: 5px 10px;
+      width: fit-content;
+      font-weight: 600;
       margin-bottom: 14px;
     }
 
-    .card h3 {
-      margin: 0;
+    .card-title {
       font-size: 24px;
-      letter-spacing: -0.4px;
-      line-height: 1.2;
-      color: #2f3137;
+      letter-spacing: -0.5px;
+      margin: 0;
     }
 
-    .card p {
-      margin: 8px 0 0;
-      font-size: 16px;
-      color: #666b76;
-      line-height: 1.5;
+    .card-desc {
+      margin-top: 8px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 14px;
     }
 
-    .float-tools {
-      position: fixed;
-      right: 16px;
-      bottom: 80px;
-      display: grid;
-      gap: 10px;
-      z-index: 30;
+    .card-link {
+      margin-top: 14px;
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 500;
     }
 
-    .float-btn {
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.95);
-      box-shadow: var(--shadow);
-      font-size: 26px;
-      color: #5f6470;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
+    .footer-panel {
+      border-radius: var(--radius-lg);
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      padding: 26px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
     }
 
-    @media (max-width: 680px) {
-      .section-title { font-size: 44px; }
-      .section-title span { font-size: 38px; }
-      .card h3 { font-size: 22px; }
-      .card p { font-size: 15px; }
+    @media (max-width: 980px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
-    @media (max-width: 560px) {
-      .cards { grid-template-columns: 1fr; }
-      .pill { min-width: 140px; }
-      .search-btn { padding: 0 13px; }
-      .hero { min-height: 190px; }
+      .page {
+        padding: 14px 12px 32px;
+      }
+
+      .topbar-inner {
+        padding: 0 12px;
+      }
+
+      .top-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 64px 16px 58px;
+      }
+
+      .panel,
+      .status-card {
+        padding: 22px;
+      }
+
+      .panel h2 {
+        font-size: 30px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .time {
+        font-size: 38px;
+      }
     }
   </style>
 </head>
 <body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">lutqhysky</div>
+      <nav class="top-links">
+        <a href="#">主页</a>
+        <a href="#quick-links">常用入口</a>
+        <a href="https://github.com/lutqhysky/lutqhysky-homepage" target="_blank" rel="noreferrer">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
   <main class="page">
     <section class="hero">
-      <h1>ddgksf2013 导航站</h1>
-
-      <div class="search-shell">
-        <form class="search-form" action="https://www.google.com/search" method="get" target="_blank" rel="noreferrer">
-          <span class="search-icon">🔍</span>
-          <input class="search-input" type="text" name="q" placeholder="搜索内容..." required />
-          <button class="search-btn" type="submit">Google</button>
-        </form>
-      </div>
-
-      <div class="toolbar">
-        <span class="tool">🌐</span>
-        <span class="tool">☰</span>
-      </div>
-
-      <div class="switch" aria-label="tab switch">
-        <button class="pill active" type="button">🌍 WebIndex</button>
-        <button class="pill" type="button">☀ QuantumultX</button>
+      <p class="eyebrow">个人主页</p>
+      <h1>简洁、高效、像 Apple 官网一样清晰</h1>
+      <p>把你每天都要用到的平台、服务和工作流入口，统一到一个舒适的首页里。</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="https://dash.cloudflare.com/" target="_blank" rel="noreferrer">打开 Cloudflare</a>
+        <a class="btn" href="https://github.com/lutqhysky/lutqhysky-homepage" target="_blank" rel="noreferrer">查看源码</a>
       </div>
     </section>
 
-    <section class="section">
-      <h2 class="section-title"># <span>资源推荐</span></h2>
-      <div class="cards">
-        <a class="card" href="https://dash.cloudflare.com/" target="_blank" rel="noreferrer">
-          <span class="heat">🔥 10970</span>
-          <div class="logo">⚡</div>
-          <h3>Cloudflare 控制台</h3>
-          <p>管理域名、Pages 与边缘网络规则。</p>
-        </a>
+    <section class="grid">
+      <article class="panel">
+        <h2>你的私人控制台</h2>
+        <p>
+          主页采用苹果官网常见的信息层级：大标题 + 短说明 + 明确按钮，减少视觉噪音。
+          后续你可以继续加上服务状态、快捷脚本、文档入口，让这个页面真正成为每天打开的工作中枢。
+        </p>
+      </article>
 
-        <a class="card" href="https://n8n.lutqhysky.qzz.io/" target="_blank" rel="noreferrer">
-          <span class="heat">🔥 8691</span>
-          <div class="logo">🤖</div>
-          <h3>n8n 自动化</h3>
-          <p>流程编排、消息通知与脚本任务入口。</p>
-        </a>
-
-        <a class="card" href="https://github.com/lutqhysky/lutqhysky-homepage" target="_blank" rel="noreferrer">
-          <span class="heat">🔥 9442</span>
-          <div class="logo">🐙</div>
-          <h3>GitHub 仓库</h3>
-          <p>主页源码托管，修改后自动触发部署。</p>
-        </a>
-
-        <a class="card" href="https://lutqhysky.qzz.io/" target="_blank" rel="noreferrer">
-          <span class="heat">🔥 7664</span>
-          <div class="logo">🌐</div>
-          <h3>主域名入口</h3>
-          <p>汇总你的个人站点与所有服务地址。</p>
-        </a>
-      </div>
+      <aside class="status-card">
+        <h3>当前时间</h3>
+        <div class="time" id="time">--:--:--</div>
+        <div class="date" id="date">----</div>
+      </aside>
     </section>
 
-    <section class="section">
-      <h2 class="section-title"># <span>效率工具</span></h2>
-      <div class="cards">
-        <a class="card" href="https://calendar.google.com/" target="_blank" rel="noreferrer">
-          <span class="heat">🔥 30256</span>
-          <div class="logo">📅</div>
-          <h3>Google Calendar</h3>
-          <p>日程安排、提醒和周期任务管理。</p>
-        </a>
+    <section class="cards" id="quick-links">
+      <a class="card" href="https://dash.cloudflare.com/" target="_blank" rel="noreferrer">
+        <div>
+          <span class="card-tag">部署</span>
+          <h3 class="card-title">Cloudflare</h3>
+          <p class="card-desc">管理 Pages、域名、Workers 与网络规则。</p>
+        </div>
+        <span class="card-link">进一步了解 ></span>
+      </a>
+
+      <a class="card" href="https://github.com/lutqhysky/lutqhysky-homepage" target="_blank" rel="noreferrer">
+        <div>
+          <span class="card-tag">代码</span>
+          <h3 class="card-title">GitHub</h3>
+          <p class="card-desc">版本管理主页代码，自动触发 Cloudflare 部署。</p>
+        </div>
+        <span class="card-link">进一步了解 ></span>
+      </a>
+
+      <a class="card" href="https://n8n.lutqhysky.qzz.io/" target="_blank" rel="noreferrer">
+        <div>
+          <span class="card-tag">自动化</span>
+          <h3 class="card-title">n8n</h3>
+          <p class="card-desc">编排日常抓取、通知与任务流程的入口。</p>
+        </div>
+        <span class="card-link">进一步了解 ></span>
+      </a>
+
+      <a class="card" href="https://lutqhysky.qzz.io/" target="_blank" rel="noreferrer">
+        <div>
+          <span class="card-tag">站点</span>
+          <h3 class="card-title">主域名</h3>
+          <p class="card-desc">访问你的聚合主页与未来各类子服务入口。</p>
+        </div>
+        <span class="card-link">进一步了解 ></span>
+      </a>
+    </section>
+
+    <section class="footer-panel">
+      Powered by Cloudflare Pages · Designed with Apple-like visual language
+    </section>
+  </main>
 
         <a class="card" href="https://mail.google.com/" target="_blank" rel="noreferrer">
           <span class="heat">🔥 5063</span>
