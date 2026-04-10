@@ -14,12 +14,10 @@
       --line: rgba(0, 0, 0, 0.08);
       --blue: #0071e3;
       --blue-hover: #0077ed;
-      --radius-xxl: 36px;
       --radius-xl: 28px;
       --radius-lg: 22px;
       --radius-md: 16px;
-      --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.06);
-      --shadow-card: 0 18px 40px rgba(0, 0, 0, 0.1);
+      --shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
     }
 
     * {
@@ -30,9 +28,9 @@
     body {
       margin: 0;
       padding: 0;
-      background: var(--bg);
-      color: var(--text);
       font-family: "SF Pro Text", "SF Pro Display", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
       scroll-behavior: smooth;
     }
 
@@ -44,23 +42,23 @@
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 20;
       height: 52px;
-      background: rgba(251, 251, 253, 0.8);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
       backdrop-filter: saturate(180%) blur(20px);
       -webkit-backdrop-filter: saturate(180%) blur(20px);
+      background: rgba(251, 251, 253, 0.78);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     }
 
     .topbar-inner {
-      max-width: 1140px;
+      max-width: 1100px;
       height: 100%;
       margin: 0 auto;
       padding: 0 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 16px;
       font-size: 14px;
     }
 
@@ -71,47 +69,25 @@
 
     .top-links {
       display: flex;
-      gap: 16px;
+      align-items: center;
+      gap: 18px;
       color: var(--muted);
     }
 
-    .top-links a:hover {
-      color: var(--text);
-    }
-
     .page {
-      max-width: 1140px;
+      max-width: 1160px;
       margin: 0 auto;
-      padding: 22px 16px 52px;
+      padding: 28px 18px 56px;
     }
 
     .hero {
-      position: relative;
-      overflow: hidden;
-      border-radius: var(--radius-xxl);
-      min-height: 560px;
-      padding: 66px 62px;
-      display: flex;
-      align-items: flex-end;
-      background:
-        radial-gradient(circle at 12% 14%, rgba(47, 114, 240, 0.4) 0%, rgba(47, 114, 240, 0) 40%),
-        radial-gradient(circle at 82% 16%, rgba(176, 96, 255, 0.34) 0%, rgba(176, 96, 255, 0) 34%),
-        linear-gradient(145deg, #131418 8%, #20242d 50%, #121522 100%);
-      color: #fff;
-      box-shadow: var(--shadow-card);
-      margin-bottom: 16px;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: auto -12% -28% auto;
-      width: 420px;
-      height: 420px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0));
-      filter: blur(10px);
-      pointer-events: none;
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at 20% 0%, #ffffff 0%, #f7f7fa 50%, #efeff4 100%);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      text-align: center;
+      padding: 86px 20px 78px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
     }
 
     .hero-content {
@@ -121,61 +97,52 @@
     }
 
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
       margin: 0;
-      color: rgba(255, 255, 255, 0.78);
-      font-size: 16px;
-      font-weight: 500;
+      color: var(--blue);
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.2px;
     }
 
     .hero h1 {
-      margin: 14px 0 0;
-      font-size: clamp(40px, 6.8vw, 74px);
-      line-height: 1.04;
+      margin: 14px auto 0;
+      max-width: 920px;
+      font-size: clamp(38px, 6vw, 78px);
+      line-height: 1.06;
       letter-spacing: -1.6px;
       font-weight: 700;
     }
 
     .hero p {
-      margin: 18px 0 0;
-      max-width: 640px;
-      color: rgba(255, 255, 255, 0.82);
-      font-size: clamp(17px, 2vw, 24px);
-      line-height: 1.42;
+      margin: 18px auto 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: clamp(18px, 2vw, 28px);
+      line-height: 1.35;
       letter-spacing: -0.2px;
     }
 
     .hero-actions {
-      margin-top: 28px;
+      margin-top: 30px;
       display: flex;
+      justify-content: center;
       flex-wrap: wrap;
       gap: 12px;
     }
 
     .btn {
-      height: 44px;
       border-radius: 999px;
-      padding: 0 20px;
-      border: 1px solid rgba(255, 255, 255, 0.26);
-      background: rgba(255, 255, 255, 0.08);
-      color: #fff;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 15px;
+      padding: 11px 20px;
+      font-size: 16px;
       font-weight: 500;
+      border: 1px solid var(--line);
+      background: #fff;
       transition: 0.2s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      background: rgba(255, 255, 255, 0.15);
     }
 
     .btn.primary {
       border-color: transparent;
+      color: #fff;
       background: var(--blue);
     }
 
@@ -183,111 +150,109 @@
       background: var(--blue-hover);
     }
 
-    .row {
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 14px;
-      margin-bottom: 14px;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 16px;
+      margin-bottom: 16px;
     }
 
     .panel {
-      border-radius: var(--radius-xl);
       background: var(--surface);
       border: 1px solid rgba(0, 0, 0, 0.06);
-      padding: 34px;
-      box-shadow: var(--shadow-soft);
+      border-radius: var(--radius-lg);
+      padding: 30px;
     }
 
     .panel h2 {
       margin: 0;
-      font-size: clamp(30px, 4vw, 46px);
-      letter-spacing: -1px;
+      font-size: 36px;
       line-height: 1.1;
+      letter-spacing: -0.9px;
     }
 
     .panel p {
-      margin: 14px 0 0;
+      margin: 12px 0 0;
       color: var(--muted);
       font-size: 17px;
-      line-height: 1.78;
+      line-height: 1.7;
     }
 
     .status-card {
-      border-radius: var(--radius-xl);
+      border-radius: var(--radius-lg);
       padding: 30px;
+      background: linear-gradient(160deg, #111214, #22242b);
       color: #fff;
-      background: linear-gradient(160deg, #0f1115, #1f2430);
-      box-shadow: var(--shadow-soft);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      min-height: 100%;
     }
 
     .status-card h3 {
       margin: 0;
-      font-size: 22px;
+      font-size: 24px;
       letter-spacing: -0.4px;
-      color: rgba(255, 255, 255, 0.9);
     }
 
     .time {
-      margin-top: 18px;
-      font-size: 50px;
-      letter-spacing: -1px;
+      margin-top: 20px;
+      font-size: 46px;
       font-weight: 600;
+      letter-spacing: -1px;
     }
 
     .date {
-      margin-top: 6px;
-      color: rgba(255, 255, 255, 0.68);
+      margin-top: 8px;
+      color: rgba(255, 255, 255, 0.74);
       font-size: 15px;
     }
 
     .cards {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
+      gap: 14px;
+      margin-bottom: 16px;
     }
 
     .card {
-      border-radius: var(--radius-lg);
-      background: var(--surface);
+      background: var(--surface-soft);
       border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: var(--radius-md);
       padding: 22px;
-      min-height: 186px;
-      box-shadow: var(--shadow-soft);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: 0.2s ease;
+      min-height: 170px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
 
     .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 26px rgba(0, 0, 0, 0.08);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
     }
 
-    .tag {
+    .card-tag {
       display: inline-flex;
-      width: fit-content;
       border-radius: 999px;
-      padding: 6px 10px;
-      background: rgba(0, 113, 227, 0.1);
+      background: rgba(0, 113, 227, 0.09);
       color: var(--blue);
       font-size: 12px;
+      padding: 5px 10px;
+      width: fit-content;
       font-weight: 600;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
-    .card h3 {
+    .card-title {
+      font-size: 24px;
+      letter-spacing: -0.5px;
       margin: 0;
-      font-size: 34px;
-      letter-spacing: -0.8px;
-      line-height: 1;
     }
 
-    .card p {
-      margin: 10px 0 0;
+    .card-desc {
+      margin-top: 8px;
       color: var(--muted);
       line-height: 1.7;
       font-size: 14px;
@@ -300,24 +265,18 @@
       font-weight: 500;
     }
 
-    .footer {
-      margin-top: 14px;
+    .footer-panel {
       border-radius: var(--radius-lg);
-      background: var(--surface);
+      background: #fff;
       border: 1px solid rgba(0, 0, 0, 0.06);
-      color: var(--muted);
+      padding: 26px;
       text-align: center;
-      padding: 18px;
-      font-size: 13px;
+      color: var(--muted);
+      font-size: 14px;
     }
 
     @media (max-width: 980px) {
-      .hero {
-        min-height: 500px;
-        padding: 54px 40px;
-      }
-
-      .row {
+      .grid {
         grid-template-columns: 1fr;
       }
 
@@ -326,7 +285,10 @@
       }
     }
 
-    @media (max-width: 640px) {
+      .page {
+        padding: 14px 12px 32px;
+      }
+
       .topbar-inner {
         padding: 0 12px;
       }
@@ -335,44 +297,25 @@
         display: none;
       }
 
-      .page {
-        padding: 10px 10px 30px;
-      }
-
       .hero {
-        min-height: 430px;
-        padding: 40px 22px;
-        border-radius: 24px;
-      }
-
-      .hero h1 {
-        font-size: clamp(34px, 10vw, 48px);
+        padding: 64px 16px 58px;
       }
 
       .panel,
-      .status-card,
-      .card {
-        border-radius: 18px;
-      }
-
-      .panel {
-        padding: 24px;
-      }
-
       .status-card {
-        padding: 24px;
+        padding: 22px;
       }
 
-      .time {
-        font-size: 42px;
+      .panel h2 {
+        font-size: 30px;
       }
 
       .cards {
         grid-template-columns: 1fr;
       }
 
-      .card h3 {
-        font-size: 30px;
+      .time {
+        font-size: 38px;
       }
     }
   </style>
@@ -391,23 +334,21 @@
 
   <main class="page">
     <section class="hero">
-      <div class="hero-content">
-        <p class="eyebrow">个人主页 · Daily Console</p>
-        <h1>把常用服务放在一个真正好看的首页</h1>
-        <p>更接近 Apple 官网的视觉节奏：清楚的信息层级、克制的配色、舒服的留白和更稳定的阅读体验。</p>
-        <div class="hero-actions">
-          <a class="btn primary" href="https://dash.cloudflare.com/" target="_blank" rel="noreferrer">打开 Cloudflare</a>
-          <a class="btn" href="https://github.com/lutqhysky/lutqhysky-homepage" target="_blank" rel="noreferrer">查看源码</a>
-        </div>
+      <p class="eyebrow">个人主页</p>
+      <h1>简洁、高效、像 Apple 官网一样清晰</h1>
+      <p>把你每天都要用到的平台、服务和工作流入口，统一到一个舒适的首页里。</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="https://dash.cloudflare.com/" target="_blank" rel="noreferrer">打开 Cloudflare</a>
+        <a class="btn" href="https://github.com/lutqhysky/lutqhysky-homepage" target="_blank" rel="noreferrer">查看源码</a>
       </div>
     </section>
 
-    <section class="row">
+    <section class="grid">
       <article class="panel">
-        <h2>简洁，不等于单调。</h2>
+        <h2>你的私人控制台</h2>
         <p>
-          这一版把文字密度、字号比例和留白重新平衡，减少“堆字”的压迫感。
-          后续你只要继续往下加入口卡片（例如 Plex / FreshRSS / OpenList），整个页面会越来越像一个可以长期使用的个人操作台。
+          主页采用苹果官网常见的信息层级：大标题 + 短说明 + 明确按钮，减少视觉噪音。
+          后续你可以继续加上服务状态、快捷脚本、文档入口，让这个页面真正成为每天打开的工作中枢。
         </p>
       </article>
 
@@ -421,42 +362,44 @@
     <section class="cards" id="quick-links">
       <a class="card" href="https://dash.cloudflare.com/" target="_blank" rel="noreferrer">
         <div>
-          <span class="tag">部署</span>
-          <h3>Cloudflare</h3>
-          <p>管理 Pages、域名、Workers 与网络规则。</p>
+          <span class="card-tag">部署</span>
+          <h3 class="card-title">Cloudflare</h3>
+          <p class="card-desc">管理 Pages、域名、Workers 与网络规则。</p>
         </div>
         <span class="card-link">进一步了解 ></span>
       </a>
 
       <a class="card" href="https://github.com/lutqhysky/lutqhysky-homepage" target="_blank" rel="noreferrer">
         <div>
-          <span class="tag">代码</span>
-          <h3>GitHub</h3>
-          <p>版本管理主页代码，自动触发 Cloudflare 部署。</p>
+          <span class="card-tag">代码</span>
+          <h3 class="card-title">GitHub</h3>
+          <p class="card-desc">版本管理主页代码，自动触发 Cloudflare 部署。</p>
         </div>
         <span class="card-link">进一步了解 ></span>
       </a>
 
       <a class="card" href="https://n8n.lutqhysky.qzz.io/" target="_blank" rel="noreferrer">
         <div>
-          <span class="tag">自动化</span>
-          <h3>n8n</h3>
-          <p>编排日常抓取、通知与任务流程的入口。</p>
+          <span class="card-tag">自动化</span>
+          <h3 class="card-title">n8n</h3>
+          <p class="card-desc">编排日常抓取、通知与任务流程的入口。</p>
         </div>
         <span class="card-link">进一步了解 ></span>
       </a>
 
       <a class="card" href="https://lutqhysky.qzz.io/" target="_blank" rel="noreferrer">
         <div>
-          <span class="tag">站点</span>
-          <h3>主域名</h3>
-          <p>访问聚合主页与未来各类子服务入口。</p>
+          <span class="card-tag">站点</span>
+          <h3 class="card-title">主域名</h3>
+          <p class="card-desc">访问你的聚合主页与未来各类子服务入口。</p>
         </div>
         <span class="card-link">进一步了解 ></span>
       </a>
     </section>
 
-    <div class="footer">Powered by Cloudflare Pages · Refined Apple-inspired style</div>
+    <section class="footer-panel">
+      Powered by Cloudflare Pages · Designed with Apple-like visual language
+    </section>
   </main>
 
   <script>
