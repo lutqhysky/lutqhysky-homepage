@@ -10,20 +10,25 @@
     }
 
     :root {
-      --bg: #f5f7fb;
-      --bg2: #eef2f8;
+      --bg: #f3f6fb;
+      --bg-soft: #edf2f9;
       --card: rgba(255, 255, 255, 0.82);
-      --card-solid: #ffffff;
-      --text: #111827;
-      --sub: #667085;
+      --card-solid: rgba(255, 255, 255, 0.96);
+      --text: #0f172a;
+      --text-soft: #64748b;
       --line: rgba(15, 23, 42, 0.08);
-      --primary: #4f46e5;
+      --primary: #5b5cf0;
+      --primary-2: #7c3aed;
       --primary-soft: #eef2ff;
-      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-      --shadow-hover: 0 18px 36px rgba(15, 23, 42, 0.12);
-      --radius-xl: 28px;
+      --shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+      --shadow-hover: 0 18px 40px rgba(15, 23, 42, 0.12);
+      --radius-xl: 30px;
       --radius-lg: 22px;
       --radius-md: 16px;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -31,9 +36,9 @@
       font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, #dbeafe 0%, transparent 28%),
-        radial-gradient(circle at top right, #ede9fe 0%, transparent 24%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+        radial-gradient(circle at top left, #dbeafe 0%, transparent 26%),
+        radial-gradient(circle at top right, #ede9fe 0%, transparent 22%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
       min-height: 100vh;
     }
 
@@ -45,81 +50,96 @@
     .page {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 28px 18px 46px;
+      padding: 24px 18px 48px;
     }
 
-    .topbar {
+    .nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 22px;
-      padding: 0 4px;
+      gap: 16px;
+      margin-bottom: 20px;
+      padding: 4px 6px;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
-      font-weight: 700;
-      font-size: 18px;
+      min-width: 0;
     }
 
     .brand-logo {
-      width: 40px;
-      height: 40px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      width: 42px;
+      height: 42px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
       color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 18px;
-      box-shadow: 0 10px 24px rgba(79, 70, 229, 0.28);
+      font-weight: 800;
+      box-shadow: 0 12px 24px rgba(91, 92, 240, 0.25);
+      flex-shrink: 0;
     }
 
-    .topbar-right {
+    .brand-text {
+      min-width: 0;
+    }
+
+    .brand-title {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+    }
+
+    .brand-subtitle {
+      margin-top: 2px;
+      color: var(--text-soft);
+      font-size: 13px;
+    }
+
+    .nav-right {
+      color: var(--text-soft);
       font-size: 14px;
-      color: var(--sub);
+      white-space: nowrap;
     }
 
     .hero {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 22px;
-      align-items: stretch;
-      margin-bottom: 22px;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 20px;
+      margin-bottom: 20px;
     }
 
-    .hero-main,
-    .hero-side,
-    .section,
-    .info-box {
+    .glass {
       background: var(--card);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.72);
       box-shadow: var(--shadow);
     }
 
     .hero-main {
-      border-radius: var(--radius-xl);
-      padding: 34px;
       position: relative;
       overflow: hidden;
+      border-radius: var(--radius-xl);
+      padding: 34px;
     }
 
-    .hero-main::before {
+    .hero-main::after {
       content: "";
       position: absolute;
-      right: -40px;
-      top: -40px;
-      width: 180px;
-      height: 180px;
-      background: radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 70%);
+      right: -50px;
+      top: -60px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.16) 0%, transparent 70%);
       pointer-events: none;
     }
 
-    .hero-badge {
+    .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -129,45 +149,46 @@
       color: var(--primary);
       font-size: 13px;
       font-weight: 700;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .hero-title {
       margin: 0;
-      font-size: 46px;
-      line-height: 1.18;
-      letter-spacing: -0.8px;
+      font-size: 50px;
+      line-height: 1.12;
+      letter-spacing: -1px;
+      max-width: 680px;
     }
 
     .hero-desc {
       margin: 18px 0 0;
       max-width: 720px;
-      color: var(--sub);
       font-size: 17px;
       line-height: 1.95;
+      color: var(--text-soft);
     }
 
     .hero-actions {
-      margin-top: 26px;
       display: flex;
-      gap: 12px;
       flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
     }
 
     .btn {
+      height: 48px;
+      padding: 0 18px;
+      border-radius: 15px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.9);
+      color: #1f2937;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      height: 46px;
-      padding: 0 18px;
-      border-radius: 14px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.78);
-      color: #1f2937;
       font-size: 15px;
       font-weight: 700;
-      transition: all 0.2s ease;
+      transition: 0.22s ease;
     }
 
     .btn:hover {
@@ -176,55 +197,52 @@
     }
 
     .btn.primary {
-      background: linear-gradient(135deg, #4f46e5, #7c3aed);
       color: #fff;
       border: none;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
     }
 
     .hero-tags {
-      margin-top: 26px;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+      margin-top: 24px;
     }
 
-    .mini-tag {
+    .hero-tag {
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.72);
-      border: 1px solid rgba(15, 23, 42, 0.06);
-      color: #475467;
       font-size: 13px;
       font-weight: 600;
+      color: #475569;
+      background: rgba(255, 255, 255, 0.76);
+      border: 1px solid rgba(15, 23, 42, 0.05);
     }
 
     .hero-side {
       border-radius: var(--radius-xl);
-      padding: 24px;
+      padding: 22px;
       display: flex;
       flex-direction: column;
       gap: 16px;
     }
 
-    .time-box {
-      background: linear-gradient(135deg, #111827, #334155);
-      color: #fff;
-      border-radius: 22px;
+    .time-card {
+      border-radius: 24px;
       padding: 22px;
-      min-height: 150px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      color: #fff;
+      background: linear-gradient(135deg, #111827, #334155);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
     }
 
     .time-label {
       font-size: 13px;
-      opacity: 0.75;
+      opacity: 0.78;
       margin-bottom: 8px;
     }
 
     .time-value {
-      font-size: 34px;
+      font-size: 36px;
       font-weight: 800;
       letter-spacing: 1px;
       margin-bottom: 6px;
@@ -232,33 +250,44 @@
 
     .date-value {
       font-size: 14px;
-      opacity: 0.84;
+      line-height: 1.8;
+      opacity: 0.86;
+    }
+
+    .side-card {
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(15, 23, 42, 0.06);
+      border-radius: 20px;
+      padding: 18px;
+    }
+
+    .side-title {
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .side-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .side-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: var(--text-soft);
+      font-size: 14px;
       line-height: 1.8;
     }
 
-    .stats {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-
-    .stat-card {
-      background: rgba(255,255,255,0.82);
-      border: 1px solid rgba(15, 23, 42, 0.06);
-      border-radius: 18px;
-      padding: 16px 18px;
-    }
-
-    .stat-label {
-      color: var(--sub);
-      font-size: 13px;
-      margin-bottom: 6px;
-    }
-
-    .stat-value {
-      font-size: 20px;
-      font-weight: 800;
-      color: #1f2937;
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      margin-top: 8px;
+      flex-shrink: 0;
     }
 
     .section {
@@ -267,7 +296,7 @@
       margin-bottom: 18px;
     }
 
-    .section-head {
+    .section-header {
       display: flex;
       justify-content: space-between;
       align-items: end;
@@ -277,14 +306,14 @@
 
     .section-title {
       margin: 0;
-      font-size: 28px;
-      letter-spacing: -0.4px;
+      font-size: 30px;
+      letter-spacing: -0.5px;
     }
 
     .section-desc {
       margin: 8px 0 0;
-      color: var(--sub);
       font-size: 15px;
+      color: var(--text-soft);
       line-height: 1.85;
     }
 
@@ -295,21 +324,21 @@
     }
 
     .card {
-      background: rgba(255,255,255,0.92);
+      background: var(--card-solid);
       border: 1px solid rgba(15, 23, 42, 0.06);
       border-radius: 22px;
       padding: 20px;
-      min-height: 200px;
-      transition: all 0.22s ease;
+      min-height: 182px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      transition: 0.22s ease;
     }
 
     .card:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow-hover);
-      border-color: rgba(79, 70, 229, 0.18);
+      border-color: rgba(91, 92, 240, 0.16);
     }
 
     .card-top {
@@ -318,10 +347,11 @@
       gap: 14px;
     }
 
-    .icon-wrap {
+    .card-head {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+      gap: 12px;
     }
 
     .icon {
@@ -335,33 +365,35 @@
       color: var(--primary);
       font-size: 17px;
       font-weight: 800;
-      border: 1px solid rgba(79, 70, 229, 0.10);
+      border: 1px solid rgba(91, 92, 240, 0.10);
+      flex-shrink: 0;
     }
 
     .pill {
       padding: 6px 10px;
       border-radius: 999px;
       background: #f4f6fb;
+      border: 1px solid rgba(15, 23, 42, 0.05);
       color: #667085;
-      border: 1px solid rgba(15, 23, 42, 0.06);
       font-size: 12px;
       font-weight: 700;
+      flex-shrink: 0;
     }
 
     .card-title {
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 800;
-      letter-spacing: -0.2px;
+      letter-spacing: -0.3px;
     }
 
     .card-desc {
       font-size: 14px;
-      color: var(--sub);
+      color: var(--text-soft);
       line-height: 1.9;
     }
 
     .card-link {
-      margin-top: 18px;
+      margin-top: 14px;
       color: var(--primary);
       font-size: 14px;
       font-weight: 700;
@@ -369,7 +401,7 @@
 
     .bottom-grid {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      grid-template-columns: 1.02fr 0.98fr;
       gap: 18px;
     }
 
@@ -386,41 +418,41 @@
 
     .info-text {
       margin: 0;
-      color: var(--sub);
       font-size: 15px;
+      color: var(--text-soft);
       line-height: 1.95;
     }
 
-    .plan-list {
+    .timeline {
       display: grid;
       gap: 12px;
-      margin-top: 4px;
+      margin-top: 2px;
     }
 
-    .plan-item {
-      background: rgba(255,255,255,0.9);
+    .timeline-item {
+      background: rgba(255, 255, 255, 0.88);
       border: 1px solid rgba(15, 23, 42, 0.06);
       border-radius: 18px;
       padding: 16px 18px;
     }
 
-    .plan-item strong {
+    .timeline-item strong {
       display: block;
-      margin-bottom: 6px;
       font-size: 16px;
+      margin-bottom: 6px;
     }
 
-    .plan-item span {
-      color: var(--sub);
+    .timeline-item span {
+      color: var(--text-soft);
       font-size: 14px;
       line-height: 1.85;
     }
 
     .footer {
       text-align: center;
+      padding-top: 10px;
       color: #6b7280;
       font-size: 14px;
-      padding-top: 10px;
     }
 
     @media (max-width: 1024px) {
@@ -437,13 +469,18 @@
       }
 
       .hero-title {
-        font-size: 38px;
+        font-size: 40px;
       }
     }
 
     @media (max-width: 640px) {
       .page {
         padding: 16px 12px 30px;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
       }
 
       .hero-main,
@@ -454,14 +491,8 @@
         border-radius: 22px;
       }
 
-      .topbar {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 10px;
-      }
-
       .hero-title {
-        font-size: 30px;
+        font-size: 32px;
       }
 
       .hero-desc {
@@ -480,26 +511,33 @@
       .info-title {
         font-size: 22px;
       }
+
+      .nav-right {
+        white-space: normal;
+      }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <div class="topbar">
+    <header class="nav">
       <div class="brand">
         <div class="brand-logo">L</div>
-        <div>lutqhysky 的主页</div>
+        <div class="brand-text">
+          <div class="brand-title">lutqhysky 的主页</div>
+          <div class="brand-subtitle">一个持续整理中的个人导航页</div>
+        </div>
       </div>
-      <div class="topbar-right">GitHub 托管 · Cloudflare Pages 自动部署</div>
-    </div>
+      <div class="nav-right">GitHub 托管代码 · Cloudflare Pages 自动部署</div>
+    </header>
 
     <section class="hero">
-      <div class="hero-main">
-        <div class="hero-badge">个人主页 / 导航页</div>
-        <h1 class="hero-title">你好，欢迎来到我的个人主页</h1>
+      <div class="hero-main glass">
+        <div class="eyebrow">个人主页 / 导航入口</div>
+        <h1 class="hero-title">欢迎来到我的主页</h1>
         <p class="hero-desc">
-          这里会逐步整理成我的常用入口中心。<br>
-          以后会把 Cloudflare、GitHub、n8n、域名入口，以及脚本工具、说明文档和服务页面，统一放到这里。
+          这里会慢慢整理成我的常用入口中心。<br>
+          后面会把 Cloudflare、GitHub、n8n、域名服务，以及脚本工具、说明文档和服务页面，统一放到这里。
         </p>
 
         <div class="hero-actions">
@@ -508,43 +546,46 @@
         </div>
 
         <div class="hero-tags">
-          <div class="mini-tag">静态网站</div>
-          <div class="mini-tag">自动部署</div>
-          <div class="mini-tag">个人导航页</div>
-          <div class="mini-tag">持续更新中</div>
+          <div class="hero-tag">静态网站</div>
+          <div class="hero-tag">自动部署</div>
+          <div class="hero-tag">个人导航页</div>
+          <div class="hero-tag">持续更新中</div>
         </div>
       </div>
 
-      <aside class="hero-side">
-        <div class="time-box">
+      <aside class="hero-side glass">
+        <div class="time-card">
           <div class="time-label">当前时间</div>
           <div class="time-value" id="time">--:--:--</div>
           <div class="date-value" id="date">----</div>
         </div>
 
-        <div class="stats">
-          <div class="stat-card">
-            <div class="stat-label">站点状态</div>
-            <div class="stat-value">已上线</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">部署方式</div>
-            <div class="stat-value">Cloudflare Pages</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">代码来源</div>
-            <div class="stat-value">GitHub 仓库</div>
+        <div class="side-card">
+          <div class="side-title">我现在在折腾什么</div>
+          <div class="side-list">
+            <div class="side-item">
+              <span class="dot"></span>
+              <span>把这个主页继续打磨成更实用的个人导航页。</span>
+            </div>
+            <div class="side-item">
+              <span class="dot"></span>
+              <span>把 GitHub 代码托管和 Cloudflare 自动部署流程跑顺。</span>
+            </div>
+            <div class="side-item">
+              <span class="dot"></span>
+              <span>后面继续补服务入口、脚本工具和说明文档页面。</span>
+            </div>
           </div>
         </div>
       </aside>
     </section>
 
-    <section class="section">
-      <div class="section-head">
+    <section class="section glass">
+      <div class="section-header">
         <div>
           <h2 class="section-title">常用入口</h2>
           <p class="section-desc">
-            把我经常用的网站、平台和服务入口放在一起，页面会更像真正的主页，而不是测试页。
+            先把最常用的平台和服务放进来，页面就会越来越像真正能每天打开使用的主页。
           </p>
         </div>
       </div>
@@ -552,7 +593,7 @@
       <div class="cards">
         <a class="card" href="https://dash.cloudflare.com/" target="_blank">
           <div class="card-top">
-            <div class="icon-wrap">
+            <div class="card-head">
               <div class="icon">CF</div>
               <div class="pill">平台</div>
             </div>
@@ -566,13 +607,13 @@
 
         <a class="card" href="https://github.com/lutqhysky/lutqhysky-homepage" target="_blank">
           <div class="card-top">
-            <div class="icon-wrap">
+            <div class="card-head">
               <div class="icon">GH</div>
               <div class="pill">代码</div>
             </div>
             <div class="card-title">GitHub</div>
             <div class="card-desc">
-              保存主页源码，后面直接改仓库代码，让 Cloudflare 自动部署。
+              保存主页源码，后面直接修改仓库代码让 Cloudflare 自动更新。
             </div>
           </div>
           <div class="card-link">点击进入 →</div>
@@ -580,7 +621,7 @@
 
         <a class="card" href="https://n8n.lutqhysky.qzz.io/" target="_blank">
           <div class="card-top">
-            <div class="icon-wrap">
+            <div class="card-head">
               <div class="icon">N8</div>
               <div class="pill">自动化</div>
             </div>
@@ -594,7 +635,7 @@
 
         <a class="card" href="https://lutqhysky.qzz.io/" target="_blank">
           <div class="card-top">
-            <div class="icon-wrap">
+            <div class="card-head">
               <div class="icon">DN</div>
               <div class="pill">域名</div>
             </div>
@@ -609,30 +650,30 @@
     </section>
 
     <div class="bottom-grid">
-      <section class="info-box">
+      <section class="info-box glass">
         <h3 class="info-title">这个页面现在能做什么</h3>
         <p class="info-text">
-          目前它还是一个纯静态网页，不依赖数据库，也不需要后端服务。
+          目前它还是一个纯静态网页，不依赖数据库，也不需要后端服务。<br><br>
           你只要修改 GitHub 仓库里的 <code>index.html</code>，提交到 <code>main</code> 分支，
           Cloudflare Pages 就会自动拉取代码并重新部署。<br><br>
           这很适合先把主页、导航页和说明页搭起来，后面再逐步加更多子页面。
         </p>
       </section>
 
-      <section class="info-box">
-        <h3 class="info-title">后续建设计划</h3>
-        <div class="plan-list">
-          <div class="plan-item">
-            <strong>导航页</strong>
-            <span>继续补充 Plex、FreshRSS、OpenList、面板和脚本入口。</span>
+      <section class="info-box glass">
+        <h3 class="info-title">接下来准备补的内容</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <strong>导航页继续扩展</strong>
+            <span>补充 Plex、FreshRSS、OpenList、面板入口和常用服务地址。</span>
           </div>
-          <div class="plan-item">
+          <div class="timeline-item">
             <strong>工具页</strong>
-            <span>整理常用脚本、订阅工具、接口说明和使用方法。</span>
+            <span>整理常用脚本、订阅工具、接口说明和使用方法，后面方便自己查。</span>
           </div>
-          <div class="plan-item">
-            <strong>说明页</strong>
-            <span>把各类服务用途、地址和维护方法集中写清楚。</span>
+          <div class="timeline-item">
+            <strong>说明文档页</strong>
+            <span>把各个服务是做什么的、怎么访问、怎么维护，集中写清楚。</span>
           </div>
         </div>
       </section>
