@@ -402,22 +402,20 @@
     </section>
   </main>
 
-  <script>
-    function updateTime() {
-      const now = new Date();
-      document.getElementById("time").textContent = now.toLocaleTimeString("zh-CN", {
-        hour12: false
-      });
-      document.getElementById("date").textContent = now.toLocaleDateString("zh-CN", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-        weekday: "long"
-      });
-    }
+        <a class="card" href="https://mail.google.com/" target="_blank" rel="noreferrer">
+          <span class="heat">🔥 5063</span>
+          <div class="logo">✉️</div>
+          <h3>Gmail</h3>
+          <p>邮件收发和通知汇总的核心入口。</p>
+        </a>
+      </div>
+    </section>
+  </main>
 
-    updateTime();
-    setInterval(updateTime, 1000);
-  </script>
+  <div class="float-tools" aria-hidden="true">
+    <button class="float-btn" type="button" title="最近">🕘</button>
+    <button class="float-btn" type="button" title="夜间">☾</button>
+    <button class="float-btn" type="button" title="返回顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+  </div>
 </body>
 </html>
